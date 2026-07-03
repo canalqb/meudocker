@@ -1,0 +1,15 @@
+name: Run Docker every hour
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # a cada 1 hora (no minuto 0)
+  workflow_dispatch: # permite rodar manualmente também
+
+jobs:
+  run-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Ubuntu container
+        run: |
+          docker run --rm ubuntu:22.04 bash -c "echo Hello from Docker && date"
