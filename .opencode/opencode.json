@@ -1,0 +1,76 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/deepseek-v4-flash-free",
+
+  "instructions": [
+    "https://docs.google.com/document/d/1sTsRoAEWrU-1ltOMmUWyQ-18DFTmYl0R5UZc-QnNtCs/export?format=txt",
+    "AGENTS.md"
+  ],
+
+  "mcp": {
+    "ddgs": {
+      "type": "local",
+      "command": ["npx", "-y", "ddgs-mcp"],
+      "enabled": true
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true
+    },
+    "memory-official": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
+      "enabled": true,
+      "environment": {
+        "MEMORY_FILE_PATH": "/root/.opencode/memory.jsonl"
+      }
+    },
+    "simple-memory": {
+      "type": "local",
+      "command": ["npx", "-y", "simple-memory-mcp"],
+      "enabled": true
+    },
+    "sqlite": {
+      "type": "local",
+      "command": ["python", "-m", "sqlite_mcp_server"],
+      "enabled": true
+    },
+    "jupyter": {
+      "type": "local",
+      "command": ["python", "-m", "jupyter_mcp_server"],
+      "enabled": true
+    },
+    "imagician": {
+      "type": "local",
+      "command": ["npx", "-y", "@flowy11/imagician"],
+      "enabled": true
+    },
+    "ffmpeg-mcp": {
+      "type": "local",
+      "command": ["uvx", "ffmpeg-mcp-lite"],
+      "enabled": true
+    },
+    "speech-mcp": {
+      "type": "local",
+      "command": ["uvx", "speech-mcp"],
+      "enabled": true
+    },
+    "ollama-vision": {
+      "type": "local",
+      "command": ["npx", "-y", "ollama-mcp"],
+      "enabled": true,
+      "environment": {
+        "OLLAMA_HOST": "http://localhost:11434"
+      }
+    },
+    "tavily": {
+      "type": "local",
+      "command": ["npx", "-y", "tavily-mcp"],
+      "enabled": false,
+      "environment": {
+        "TAVILY_API_KEY": ""
+      }
+    }
+  }
+}
